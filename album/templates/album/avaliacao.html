@@ -1,12 +1,94 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block container %}
-  <div class="page-header" id="banner">
+  <div class="page-header">
     <div class="row">
       <div class="col-lg-8 col-md-7 col-sm-6">
-        <h1>Fotos pendentes para avaliação</h1>
+        <h1>Avaliação de fotos</h1>
         <p class="lead"></p>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    <h3>Pendentes</h3>
+    <div class="row">
+      {% for foto in pendentes %}
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            {% thumbnail foto.imagem "140x140" crop="center" as im %}
+              <img class="card-img-top" src="{{ im.url }}" alt="Imagem"/>
+            {% endthumbnail %}
+
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a class="btn-block btn-sm" href="{% url 'aprovar-foto' foto.id %}">Aprovar</a>
+                  <a class="btn-danger btn-sm btn-outline-secondary" href="{% url 'desaprovar-foto' foto.id %}">Rejeitar</a>
+                </div>
+                <small class="text-muted">{{ foto.data|date:'d/m/Y' }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+          <p>Não há fotos pendentes.</p>
+      {% endfor %}
+    </div>
+
+
+    <h3><a data-toggle="collapse" href="#collapseRejeitadas">Rejeitadas</a></h3>
+    <div class="collapse" id="collapseRejeitadas">
+      <div class="row">
+        {% for foto in rejeitadas %}
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              {% thumbnail foto.imagem "140x140" crop="center" as im %}
+                <img class="card-img-top" src="{{ im.url }}" alt="Imagem"/>
+              {% endthumbnail %}
+
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a class="btn-success btn-sm" href="{% url 'aprovar-foto' foto.id %}">Aprovar</a>
+                  </div>
+                  <small class="text-muted">{{ foto.data|date:'d/m/Y' }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <p>Não há fotos rejeitadas.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <h3><a data-toggle="collapse" href="#collapseAprovadas">Aprovadas</a></h3>
+    <div class="collapse" id="collapseAprovadas">
+      <div class="row">
+        {% for foto in aprovadas %}
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              {% thumbnail foto.imagem "140x140" crop="center" as im %}
+                <img class="card-img-top" src="{{ im.url }}" alt="Imagem"/>
+              {% endthumbnail %}
+
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  <a class="btn-danger btn-sm" href="{% url 'desaprovar-foto' foto.id %}">Rejeitar</a>
+                  </div>
+                  <small class="text-muted">{{ foto.data|date:'d/m/Y' }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <p>Não há fotos aprovadas.</p>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
 {% endblock %}

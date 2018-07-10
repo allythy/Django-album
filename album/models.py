@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from sorl.thumbnail import ImageField
 # Create your models here.
 
 
@@ -9,7 +10,7 @@ class Album(models.Model):
 
 
 class Foto(models.Model):
-    imagem = models.ImageField()
+    imagem = ImageField()
     data = models.DateTimeField(auto_now_add=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     aprovado = models.NullBooleanField(default=None, null=True)

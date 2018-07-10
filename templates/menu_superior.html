@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
   <div class="container">
-    <a href="../album/templates" class="navbar-brand">Meu Sonho de Casamento</a>
+    <a href="/" class="navbar-brand">Meu Sonho de Casamento</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
         {#        </li>#}
         {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'avaliar-fotos' %}">Aprovar fotos</a>
+            <a class="nav-link" href="{% url 'avaliar-fotos' %}">Avaliar fotos enviadas</a>
           </li>
         {% endif %}
 
