@@ -12,4 +12,4 @@ class Foto(models.Model):
     imagem = models.ImageField()
     data = models.DateTimeField(auto_now_add=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    aprovado = models.BooleanField(default=False)
+    aprovado = models.NullBooleanField(default=None, null=True)
