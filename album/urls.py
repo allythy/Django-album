@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view()),
-    path('meualbum/', views.EditarAlbumView.as_view()),
+    path('avaliarfotos/', views.AvaliacaoFotosView.as_view(), name='avaliar-fotos'),
 ]
