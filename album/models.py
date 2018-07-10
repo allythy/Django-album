@@ -7,6 +7,9 @@ class Album(models.Model):
     nome = models.CharField(max_length=255)
     proprietario = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.nome} - {self.proprietario.username}'
+
 
 class Foto(models.Model):
     imagem = models.ImageField()

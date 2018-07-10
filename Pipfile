@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
+"boto3" = "*"
+django-storages = "*"
+gunicorn = "*"
 
 [dev-packages]
 
