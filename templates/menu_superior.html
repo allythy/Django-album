@@ -1,0 +1,36 @@
+<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+  <div class="container">
+    <a href="../album/templates" class="navbar-brand">Meu Sonho de Casamento</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Álbuns <span
+              class="caret"></span></a>
+          <div class="dropdown-menu" aria-labelledby="themes">
+            <a class="dropdown-item" href="../default/">Default</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../help/">Meu álbum</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav ml-auto">
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</div>
