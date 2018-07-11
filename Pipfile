@@ -10,6 +10,7 @@ sorl-thumbnail = "*"
 "boto3" = "*"
 django-storages = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
