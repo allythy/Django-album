@@ -1,19 +1,25 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-from django.views.generic import TemplateView, ListView, View
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, View, CreateView
 
 from album.models import Foto
 
 
-class IndexView(ListView):
+class IndexView(SuccessMessageMixin, CreateView, ListView):
+    success_message = 'Sua foto foi enviada com sucesso!'
     template_name = 'album/index.html'
     queryset = Foto.objects.filter(aprovado=True).all()
+    model = Foto
+    success_url = reverse_lazy('index')
+    fields = ['imagem']
 
 
-class AvaliacaoFotosView(TemplateView):
+class AvaliacaoFotosView(LoginRequiredMixin, TemplateView):
     template_name = 'album/avaliacao.html'
 
     def get_context_data(self,**kwargs):

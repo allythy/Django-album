@@ -11,18 +11,28 @@
     </div>
   </div>
 
+  <div class="container">
+    <div class="row">
+      {% for foto in object_list %}
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            {% thumbnail foto.imagem "512x512" crop="center" as im %}
+              <img class="card-img-top" src="{{ im.url }}" alt="Imagem"/>
+            {% endthumbnail %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 
   <div class="container">
-  <div class="row">
-    {% for foto in object_list %}
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          {% thumbnail foto.imagem "140x140" crop="center" as im %}
-            <img class="card-img-top" src="{{ im.url }}" alt="Imagem"/>
-          {% endthumbnail %}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+    <h3>Envio de fotos</h3>
+    <div class="row">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Enviar">
+      </form>
+    </div>
   </div>
 {% endblock %}
