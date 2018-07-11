@@ -26,9 +26,9 @@ TITLE = 'Meu Sonho de Casamento'
 SECRET_KEY = 'g#h2)8w6l=#41c$@x+==%+ay0!2)(7x7qd4^fz#l4m@&k8ig63'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['django-album.herokuapp.com']
+ALLOWED_HOSTS = ['django-album.herokuapp.com', 'localhost']
 
 
 # Application definition
