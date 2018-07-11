@@ -17,7 +17,7 @@
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             {% thumbnail foto.imagem "512x512" crop="center" as im %}
-              <img class="card-img-top" src="{{ im.url }}" alt="Imagem"/>
+              <a href="{{ foto.imagem.url }}" data-lightbox="aprovadas"><img class="card-img-top" src="{{ im.url }}" alt="Imagem"/></a>
             {% endthumbnail %}
           </div>
         </div>
